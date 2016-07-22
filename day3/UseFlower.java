@@ -1,14 +1,14 @@
-public class Book {
-	int price; //A
-	int page=300; 
-	boolean onSale; //B
-	
-	public static void main(String[] args) {
-		price=500; //C
-		Book b1 = new Book(); //D
-		Book b2 = new Book(); //E
+class UseFlower{
+	public static void main(String[] args){
 		
-		b1.page=200; //
-		System.out.println(b2.page);//F
+		for(int i=0;i<10;i++){
+			Flower f1 = new Flower();
+			f1.bloom();
+			System.out.println(f1.name);
+			System.out.println(f1.color);
+			System.out.println(f1.thorn);
+
+		}
+
 	}
 }
