@@ -1,0 +1,35 @@
+1. 추상클래스란?
+  -불완전한 클래스
+  -클래스를 불완전하게 하는 법
+   메서드 몸체를 없이 정의
+  -사용이유 : 클래스 정의 그 내용을 확정 지을 수 없거나 확정지어서도 
+             않되는 경우 즉 계획단계에서 사용될 수 있는 클래스...
+
+2. 인터페이스 : 기능만을 보유한 객체
+		클래스가 아니므로 현실의 다중성을 반영하기에 적절
+
+3. extends, implements = is a
+   A extends B = A와 B는 같은 종류의 자료형
+   A implements B = A와 B는 같은 종류의 자료형	
+
+4. 상수
+   상수 = 숫자(현실)
+   전산에서의 상수란, 프로그램이 종료될때가지 그 값이 변하지 않고 유지되고 있다면 상수라 한다...
+   따라서 상수가 될수 있는것들은 자바의 모든 자료형
+   숫자, 문자, 논리값, 객체 
+   
+   public final static (자료형) X = 5 ; 상수는 대문자로 하는게 관례~~
+   public final static char c = 'A'
+
+5. GUI API 지원한다!!!
+   윈도우 - Window --> Frame
+   
+   배치관리자
+   BorderLayout (0)
+   FlowLayout (0)
+   GridLayout
+   GridbagLayout
+   CardLayout
+
+쉬프트 f2 api 문서
+컨트롤 쉬프트 o 임포트

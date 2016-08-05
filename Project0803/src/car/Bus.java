@@ -1,5 +1,5 @@
 package car;
-public class Bus extends Car{
+public class Bus{
 	String name = "¹ö½º";
 
 	public void go(){

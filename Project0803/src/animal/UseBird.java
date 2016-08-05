@@ -1,8 +1,8 @@
 package animal;
 public class UseBird{
 	public static void main(String[] args){
-		//Duck d = new Duck();
-		//d.swim();
+		Duck d = new Duck();
+		d.swim();
 		//d.wing();
 
 		//Bird b = new Bird();
@@ -12,9 +12,9 @@ public class UseBird{
 		//Bird bird = new Duck();
 
 
-		Bird b = new Sparrow();
-		System.out.println(b.name);
+		//Sparrow b = new Sparrow();
+		//System.out.println(b.name);
 
-		b.wing();
+		//b.wing();
 	}
 }
