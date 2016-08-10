@@ -1,10 +1,12 @@
 package com.sds.collection;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeListener;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import javax.swing.Action;
 import javax.swing.JButton;
@@ -45,30 +47,34 @@ public class MemberList extends JFrame{
 		table = new JTable();
 		scroll = new JScrollPane(table);
 		list = new ArrayList();
-		
+		String[][] arr = new String[0][3];
 		String[] column = {"ID","이름","비번"};
 		model = new AbstractTableModel() {
 			
 			public String getColumnName(int col) {
 				
-				return Column(col);
+				return column[col];
 			}
 		
-			public Object getValueAt(int arg0, int arg1) {
+			public Object getValueAt(int col, int row) {
+				Iterator it = list.iterator();
 				
-				return null;
+				while(it.hasNext()){
+					
+					arr[0][0]=(String)it.next();
+					
+				}
+				return arr[col][row];
 			}
-			
 			
 			public int getRowCount() {
 			
-				return 0;
+				return list.size();
 			}
-			
 			
 			public int getColumnCount() {
 				
-				return 0;
+				return 3;
 			}
 		};
 		table.setModel(model);
@@ -81,20 +87,15 @@ public class MemberList extends JFrame{
 		p.add(tf_pw);
 		p.add(bt_reg);
 		p.add(bt_list);
-				
+		
+		p.setPreferredSize(new Dimension(160, 100));
 		add(p,BorderLayout.WEST);
 		add(scroll);
-		
-		
-		
+	
 		bt_reg.addActionListener(new ActionListener() {
-			
-			
 			public void actionPerformed(ActionEvent e) {
-				list.add(tf_id.getText());
-				list.add(tf_name.getText());
-				list.add(tf_pw.getText());
-			
+				getlist();
+				Showlist();
 			}
 		});
 		
@@ -104,22 +105,22 @@ public class MemberList extends JFrame{
 			}
 		});
 		
-		
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setSize(1400, 700);
+		setSize(800, 700);
 		setVisible(true);
-			
-		
+	}
+	
+	public void getlist(){
+		list.add(tf_id.getText());
+		list.add(tf_name.getText());
+		list.add(tf_pw.getText());
 	}
 	
 	public void Showlist(){
-		
+		table.updateUI();
 	}
-
 
 	public static void main(String[] args) {
 		new MemberList();
-
 	}
-
 }
