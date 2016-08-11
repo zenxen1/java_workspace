@@ -1,0 +1,29 @@
+{
+	"members" : [
+		{
+			"name" : "아이유",
+			"gender" : "남성",
+			"age" : 23,
+			"photo" : "c:/~~~.jpg",
+		},
+		{
+			"name" : "이원동",
+			"gender" : "여자",
+			"age" : 10,
+			"photo" : "c:/~~~.jpg",
+		},
+		{
+			"name" : "김학붕",
+			"gender" : "여성",
+			"age" : 40,
+			"photo" : "c:/~~~.jpg",
+		},
+		{
+			"name" : "지코",
+			"gender" : "게이",
+			"age" : 23,
+			"photo" : "c:/~~~.jpg",
+		},
+
+	]
+}
