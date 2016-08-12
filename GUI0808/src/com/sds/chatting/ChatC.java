@@ -12,22 +12,20 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 //ctrl shift + f 정렬
-public class ChatB extends JFrame implements KeyListener{
+public class ChatC extends JFrame implements KeyListener{
 	JTextArea area;
 	JPanel p;
 	JTextField txt;
 	JScrollPane scroll;
+	ChatB chatB;
 	ChatA chatA;
-	ChatC chatC;
 	
 	
 	//생성자도 메서드 이므로 아래의 코드는 충분히 가능하다
 	//이 생성자르 호출하는 자는 chata의 인스턴스를 넘겨야한다
-	public ChatB(ChatA chatA) {
-		this.chatA = chatA;
-		
-		chatC = new ChatC(this, chatA);
-		
+	public ChatC(ChatB chatB, ChatA chatA) {
+		this.chatB = chatB;
+		this.chatA= chatA;
 		area = new JTextArea();
 		p = new JPanel();
 		txt = new JTextField(15);
@@ -41,7 +39,7 @@ public class ChatB extends JFrame implements KeyListener{
 		
 		txt.addKeyListener(this);
 		
-		setBounds(400, 200, 300, 400);
+		setBounds(700, 200, 300, 400);
 		setVisible(true);
 
 	}
@@ -61,8 +59,8 @@ public class ChatB extends JFrame implements KeyListener{
 			//나와 chatA의 area에 출력!!
 			String msg = txt.getText();
 			area.append(msg+"\n");//나의 area
+			chatB.area.append(msg+"\n");
 			chatA.area.append(msg+"\n");
-			chatC.area.append(msg+"\n");
 			txt.setText("");
 			
 		}

@@ -46,8 +46,8 @@ public class WidowTest {
 		
 		
 		//프레임에 FlowLayout을 적용하자!!
-		FlowLayout flow = new FlowLayout();
-		f.setLayout(flow);
+		//FlowLayout flow = new FlowLayout();
+		//f.setLayout(flow);
 		
 		f.add(la_id); //윈도우에 ID 제목 부착!!
 		f.add(t_id); //윈도우에 id 텍스트필드 부착!!

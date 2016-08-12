@@ -23,6 +23,7 @@ public class ChatA extends JFrame implements ActionListener,KeyListener{
 	JScrollPane scroll;
 	ChatB chatB;
 	
+	
 	public ChatA(){ //컨트롤 + 스페이스
 		area = new JTextArea();
 		p = new JPanel();
@@ -50,7 +51,9 @@ public class ChatA extends JFrame implements ActionListener,KeyListener{
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		//버튼을 누르면, 새창을 띄우면서 그 주소값도 보관하자!!
+		
 		chatB = new ChatB(this);
+		
 		bt.setEnabled(false);
 		//txt.requestFocus();//포커스 올리기
 		
@@ -75,6 +78,8 @@ public class ChatA extends JFrame implements ActionListener,KeyListener{
 			
 			//ChaB의 area에 값을 누적하자!!
 			chatB.area.append(msg+"\n");
+			chatB.chatC.area.append(msg+"\n");
+	
 		}
 	}
 
