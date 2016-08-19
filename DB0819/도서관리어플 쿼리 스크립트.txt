@@ -1,0 +1,107 @@
+drop table topcategory;
+drop table subcategory;
+drop table book;
+
+drop sequence  seq_topcategory;
+drop sequence  seq_subcategory;
+drop sequence  seq_book;
+
+create table  topcategory(
+    topcategory_id  number primary key
+  , title varchar2(20)
+ );
+
+create  table subcategory(
+subcategory_id number primary key
+, title varchar(20)
+, topcategory_id number
+);
+
+create  table  book(
+  book_id number primary key
+, subcategory_id number 
+, bookname varchar2(50)
+, publisher varchar2(30)
+, author  varchar2(60)
+, price number default 0
+, regdate  date  default  sysdate
+);
+
+
+--시퀀스 생성 
+create  sequence  seq_topcategory
+start with 1
+increment by 1;
+
+create  sequence  seq_subcategory
+start with 1
+increment by 1;
+
+create  sequence  seq_book
+start with 1
+increment by 1;
+
+insert into topcategory(topcategory_id, title) 
+values(seq_topcategory.nextval , '소설');
+
+insert into topcategory(topcategory_id, title) 
+values(seq_topcategory.nextval , '자기계발');
+
+insert into topcategory(topcategory_id, title) 
+values(seq_topcategory.nextval , '시');
+
+insert into topcategory(topcategory_id, title) 
+values(seq_topcategory.nextval , '인문');
+
+
+--하위 카테고리 입력 
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, 'SF', 1);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '고전소설', 1);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '추리소설', 1);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '연예소설', 1);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '취업', 2);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '재테크', 2);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '리더쉽', 2);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '화법', 2);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '고전시', 3);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '현대시', 3);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '동시', 3);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '영문시', 3);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '철학', 4);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '심리학', 4);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '신학', 4);
+
+insert into subcategory(subcategory_id,	title,topcategory_id)
+values(seq_subcategory.nextval, '언어학', 4);
+
+commit;
