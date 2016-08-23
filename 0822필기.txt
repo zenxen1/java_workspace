@@ -1,0 +1,15 @@
+SQL문, 쿼리문(=Query)이란?
+- DBMS에서만 해석 및 실행되는 언어
+
+SQL문의 종류
+1. DDL - Database Definition Langunage(데이터 정의어)
+         Create : 생성
+         Alter : 변경
+         Drop : 삭제
+2. DML - Data Manipulation language(데어터 조작어)
+	 select(레코드조회), - excuteQuery
+         insert(레코드입력), - excuteuDate 
+         updata(레코드수정), - excuteuDate
+         delete(레코드삭제)  - excuteuDate
+3. DCL - Database Control language (데이터베이스 제어어)
+         grant, revoke (주로 DBA 업무)
