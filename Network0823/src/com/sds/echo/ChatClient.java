@@ -28,7 +28,7 @@ public class ChatClient extends JFrame implements ActionListener{
 	JButton bt;
 	JPanel p;
 	Socket client; //대화용 소켓(종이컵 = 전화기)
-	String ip="70.12.112.96";
+	String ip="70.12.112.103";
 	int port = 8888;
 	
 	BufferedReader buffr;//2입력용 스트림
