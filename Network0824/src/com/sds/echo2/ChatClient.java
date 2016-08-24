@@ -31,9 +31,7 @@ public class ChatClient extends JFrame implements ActionListener{
 	JScrollPane scroll;
 	JTextField t_input;
 	Socket client; // 대화용 소켓!!!
-	BufferedReader buffr;
-	BufferedWriter buffw;
-
+	ClientThread ct;
 
 	public ChatClient() {
 		p_north = new JPanel();
@@ -62,8 +60,7 @@ public class ChatClient extends JFrame implements ActionListener{
 		t_input.addKeyListener(new KeyAdapter() {
 			public void keyReleased(KeyEvent e) {
 				if(e.getKeyCode() == KeyEvent.VK_ENTER){
-					sendmsg();
-					listen();
+					ct.sendmsg(t_input.getText());
 					t_input.setText("");
 				}
 			}
@@ -80,9 +77,8 @@ public class ChatClient extends JFrame implements ActionListener{
 		String port = t_port.getText();
 		try {
 			client = new Socket(ip, Integer.parseInt(port));
-			buffr= new BufferedReader(new InputStreamReader(client.getInputStream()));
-			buffw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-			
+			ct = new ClientThread(this);
+			ct.start();//대화용 쓰레드 동작 시작!!!
 			
 		} catch (NumberFormatException e) {
 			showMsg("포트번호는 정수로 입력해야 합니다");
@@ -96,28 +92,9 @@ public class ChatClient extends JFrame implements ActionListener{
 		}
 	}
 	
-	public void sendmsg(){
-		String msg = t_input.getText();
-		try {
-			buffw.write(msg + "\n");
-			buffw.flush(); //출력스트림은 비워야한다
-
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
 	
-	public void listen(){
-		try {
-			String data = buffr.readLine();
-			area.append(data+"\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-	}
+	
+	
 	
 	public void showMsg(String message){
 		JOptionPane.showMessageDialog(this, message);

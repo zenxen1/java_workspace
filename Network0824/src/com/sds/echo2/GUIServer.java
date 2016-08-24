@@ -1,9 +1,7 @@
 /*1.Echo 시스템
  *   단점 - 오직 1인의 접속자만 처리할 수 있다!!
- *   		
- * 
  * 2.Unicating
- * 
+ *   메세지를 보낼 대상이 1명
  * 3.Multicasting
  * 
  *에코 서버를 GUI로 구축하자!!
@@ -22,6 +20,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Vector;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -41,6 +40,7 @@ public class GUIServer extends JFrame implements ActionListener, Runnable{
 	Thread acceptTread; //3.접속자 감지용 쓰레드
 	BufferedReader buffr;
 	BufferedWriter buffw;
+	Vector <ServerThread>list = new Vector<ServerThread>();// ArrayList와 기능은 동일하나 동시성 문제에 있어서는 동기화를 지원해주므로, 쓰레드에 안전하다
 
 	
 	public GUIServer() {
@@ -72,23 +72,20 @@ public class GUIServer extends JFrame implements ActionListener, Runnable{
 			
 			
 			
+			while(true){
 			Socket client = server.accept(); //무한대기에 빠진다!!
 			String ip = client.getInetAddress().getHostAddress();
 			
 			area.append(ip+"님접속!!\n");
 			
-			//5.접속한 이유는 대화를 하기 위함이므로, 스트림을 곧바로 얻어내자!!
-			buffr = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			buffw = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
+			//클라이언트의 접속이 감지되면, 소켓을 얻어서 보관해 놓는다
+			ServerThread ct = new ServerThread(client,area,list);
+			ct.start();
 			
-			//듣고 보내기!!
-			while(true){
-				String msg = buffr.readLine(); //클라이언트의 메세지
-				area.append(msg+"\n"); //대화 모니터링
-				
-				buffw.write(msg+"\n");
-				buffw.flush();
-				
+			//생성된 쓰레드를 접속자 명단에 추가하자!!
+			list.add(ct);
+			area.append("현재 "+list.size()+"명\n");
+			
 			}
 			
 		} catch (NumberFormatException e) {
