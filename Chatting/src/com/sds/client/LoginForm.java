@@ -1,5 +1,5 @@
-// 보안에 취약
-package com.sds.katalk;
+
+package com.sds.client;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
