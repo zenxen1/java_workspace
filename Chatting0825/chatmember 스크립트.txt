@@ -1,3 +1,43 @@
+create table chatmember(
+chatmember_id number primary key
+,id varchar2(20)
+,password varchar2(20)
+,name varchar2(20)
+);
+
+create sequence seq_chatmember
+increment by 1
+start with 1;
+
+alter table chatmember
+add profile varchar2(30);
+
+alter table chatmember
+add status varchar2(100);
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'super','3223','Ω¥∆€∏«','1.png','ø¿¥√¿∫ ±‚∫–≤‹≤‹');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'zenxen','1111','¿Ãø¯±∏','1.png','ø¿¥√¿∫ ±◊≥…');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'sduper','1111','Ω∫∆€∏«','1.png','ø¿¥√¿∫ ¡π∑¡');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'ouper','1111','ø¿∆€∏«','1.png','ø¿¥√¿∫ §∑§∑');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'ruper','1111','±‚∆€∏«','1.png','ø¿¥√¿∫ ≤®¡Æ');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'uuper','1111','¿Ø∆€∏«','1.png','ø¿¥√¿∫ ¥Îπ⁄');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'iuper','1111','¿Ã∆€∏«','1.png','ø¿¥√¿∫ »˛');
+
+commit;
+
 create table friend(
 friend_id number primary key
 ,me number
