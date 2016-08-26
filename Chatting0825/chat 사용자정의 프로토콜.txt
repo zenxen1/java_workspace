@@ -1,0 +1,48 @@
+{
+	"request" : "login",
+	"id":"batman",
+	"password":"1234"
+}
+
+{
+	"response" : "login",
+	"result":"ok",
+	"data":{
+		"name":"batman"
+	}
+}
+
+{
+	"request" : "userlist"
+}
+
+
+
+{
+	"response" : "userlist",
+	"result":"ok",
+	"data": [
+		{
+			"chatmember" : 1,
+			"id" : "batman",
+			"password" : "1234",
+			"name" : "배트맨",
+			"profile" : "myphoto.png",
+			"status" : "잠수탐"
+		},
+		{
+			"chatmember" : 1,
+			"id" : "batman",
+			"password" : "1234",
+			"name" : "배트맨",
+			"profile" : "myphoto.png",
+			"status" : "잠수탐"
+		}
+	]
+}
+
+{
+	"request" : "follow",
+	"me" : 1,
+	"you" : 3
+}

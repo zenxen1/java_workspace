@@ -1,0 +1,50 @@
+create table friend(
+friend_id number primary key
+,me number
+,you number
+);
+
+create sequence seq_friend
+increment by 1
+start with 1;
+
+--테이블 변경(추가) DDL(create,,alter,drop),
+--DML(insert,update,delete), DCL(권한)
+
+alter table chatmember
+add profile varchar2(30);
+
+
+alter table chatmember
+add status varchar2(100);
+
+--프로필 사진명과 상태 메세지 업데이트
+update CHATMEMBER set PROFILE = '1.png', status = '태국가는중..'
+where CHATMEMBER_ID=1;
+
+select * from chatmember;
+
+commit;
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'super','3223','슈퍼맨','1.png','오늘은 기분꿀꿀');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'zenxen','1111','이원구','1.png','오늘은 그냥');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'sduper','1111','스퍼맨','1.png','오늘은 졸려');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'ouper','1111','오퍼맨','1.png','오늘은 ㅇㅇ');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'ruper','1111','기퍼맨','1.png','오늘은 꺼져');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'uuper','1111','유퍼맨','1.png','오늘은 대박');
+
+insert into CHATMEMBER (CHATMEMBER_ID, ID, PASSWORD, NAME, PROFILE, STATUS) 
+values(seq_chatmember.nextval,'iuper','1111','이퍼맨','1.png','오늘은 힝');
+
+commit;

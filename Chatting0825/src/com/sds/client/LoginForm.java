@@ -142,10 +142,11 @@ public class LoginForm extends JFrame implements ActionListener{
 			if(jsonObject.get("result").equals("ok")){
 				JSONObject obj = (JSONObject)jsonObject.get("data");
 				String name = (String)obj.get("name");
+				long chatmember_id = (Long)obj.get("chatmember_id");
 				
 				JOptionPane.showMessageDialog(this,name+ "성공");
 				//채팅 메인 띄우기
-				AppMain app = new AppMain();
+				AppMain app = new AppMain(buffr,buffw,(int)chatmember_id);
 				
 				
 			}else if(jsonObject.get("result").equals("fail")){

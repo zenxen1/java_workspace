@@ -78,9 +78,12 @@ public class ServerThread extends Thread{
 					
 					if(rs.next()){
 						String name = rs.getString("name");
+						int chatmember_id = rs.getInt("chatmember_id");
+						
 						sb.append("\"result\":\"ok\",");
 						sb.append("\"data\":{");
-						sb.append("\"name\":\""+name+"\"");
+						sb.append("\"name\":\""+name+"\",");
+						sb.append("\"chatmember_id\":"+chatmember_id);
 						sb.append("}");
 					}else{
 						sb.append("\"result\":\"fail\",");
@@ -97,6 +100,51 @@ public class ServerThread extends Thread{
 				
 					//클라이언트의 요청이 회원가입이라면
 				}else if(jsonObject.get("request").equals("regist")){
+					
+				}else if(jsonObject.get("request").equals("userlist")){
+					String sql ="select * from chatmember";
+					pstmt = con.prepareStatement(sql,ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY);
+					rs = pstmt.executeQuery();
+					
+					//rs의 커서 위치를 레코드의 제일 마지막으로 옮기기
+					rs.last();
+					int total = rs.getRow();//현재 레코드의 위치를 반환!!
+					
+					sb.delete(0, sb.length());//String buffer 초기화
+					
+					sb.append("{");
+					sb.append("\"response\" : \"userlist\",");
+					sb.append("\"result\":\"ok\",");
+					sb.append("\"data\":[");
+					
+					int count =0;
+					
+					rs.beforeFirst();
+					while(rs.next()){
+						count++;
+					
+						int chatmember_id = rs.getInt("chatmember_id");
+						String id = rs.getString("id");
+						String password = rs.getString("password");
+						String name = rs.getString("name");
+						String profile = rs.getString("profile");
+						String status = rs.getString("status");
+						
+						sb.append("{");
+						sb.append("\"chatmember\":"+chatmember_id+",");
+						sb.append("\"id\":\""+id+"\",");
+						sb.append("\"password\":\""+password+"\",");
+						sb.append("\"name\":\""+name+"\",");
+						sb.append("\"profile\":\""+profile+"\",");
+						sb.append("\"status\":\""+status+"\"");
+						if(count <= total-1){
+							sb.append("},");
+						}else{
+							sb.append("}");
+						}
+					}
+					sb.append("]");
+					sb.append("}");
 					
 				}
 			} catch (ParseException e) {
