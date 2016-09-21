@@ -1,0 +1,5 @@
+select  pr.PRODUCT_ID, product_name, price, stock, detail, img
+from PROMOTION_PRODUCT pm, PRODUCT pr
+where pm.PRODUCT_ID = pr.PRODUCT_ID
+and
+pm.PROMOTION_ID = (select promotion_id from promotion where title='계절상품');
