@@ -1,0 +1,71 @@
+create table movie(
+movie_id number primary key
+,title varchar2(50)
+,genre_id number
+,show_time number
+,open_day date
+);
+
+
+create table gener(
+genre_id number primary key
+,title varchar2(20)
+);
+
+create table score(
+score_id number primary key
+,star number default 0
+,regdate date default sysdate
+,movie_id number
+);
+
+create table director(
+director_id number primary key
+,name varchar2(50)
+);
+
+create table casting(
+casting_id number primary key
+,actor varchar2(50)
+,movie_id number
+);
+
+create sequence seq_movie
+increment by 1
+start with 1;
+
+create sequence seq_gener
+increment by 1
+start with 1;
+
+create sequence seq_score
+increment by 1
+start with 1;
+
+create sequence seq_director
+increment by 1
+start with 1;
+
+create sequence seq_casting
+increment by 1
+start with 1;
+
+select g.title as gener_title, m.title as movie_title, movie_id, open_day,show_time from movie m, gener g where m.genre_id=g.genre_id;
+
+select g.title as gener_title, m.title as movie_title, movie_id, open_day,show_time from movie m, gener g where m.genre_id=g.genre_id;
+select * from gener;
+
+--기존 테이블 수정 DDL,DML
+alter table movie 
+add img varchar2(50); 
+
+update movie set img='1.jpg' where movie_id >=12;
+
+update movie set img='1.jpg';
+commit;
+
+
+
+
+
+
